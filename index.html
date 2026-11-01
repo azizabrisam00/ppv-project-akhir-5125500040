@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7e6d9a">
+  <meta name="description" content="TASK DO - Pencatat To Do List mu">
+  <title>TASK DO - Pencatat To Do List</title>
+  <link rel="icon" href="assets/images/task-do-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..72,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" id="app">
+
+    <section class="welcome" id="welcome" aria-label="Selamat datang di Task Do">
+      <img class="welcome-logo" src="assets/images/task-do-logo.png" alt="Logo Task Do, tulisan Task bintang Do berwarna oranye dan ungu">
+      <p class="welcome-tagline">Pencatat <strong><em>To Do List</em></strong> mu</p>
+      <button type="button" class="btn btn-pill" id="enterBtn">Catat Sekarang <img src="assets/icons/Icon_Panah@2x.png" alt="" width="20" height="20"></button>
+    </section>
+
+    <header class="topbar">
+      <img class="topbar-logo" src="assets/images/task-do-logo.png" alt="Task Do">
+    </header>
+
+    <div class="content" id="content">
+
+      <main class="page" id="page-tasks" aria-labelledby="h-tasks">
+        <section class="task-compose-area" aria-label="Tambah tugas">
+          <form class="add-task-form" id="taskForm" novalidate>
+            <div class="task-editor-main">
+              <span class="new-task-check" aria-hidden="true"><span></span></span>
+              <input class="task-entry" type="text" id="taskTitle" name="title" maxlength="80"
+                placeholder="Tulis Judul To Do List..." autocomplete="off" aria-label="Judul To Do List"
+                     aria-describedby="titleError">
+            </div>
+            <p class="error-text" id="titleError" role="alert" aria-live="assertive"></p>
+            <label class="task-details-row" for="taskDetails">
+              <textarea class="task-details-entry" id="taskDetails" name="details" rows="1" maxlength="240" placeholder="Tulis deskripsi tugas (opsional)..." aria-label="Deskripsi tugas, opsional"></textarea>
+            </label>
+            <div class="task-date-actions">
+              <span class="deadline-label">Pilih Deadline</span>
+              <button type="button" class="date-chip" id="todayBtn">Hari ini</button>
+              <button type="button" class="date-chip" id="tomorrowBtn">Besok</button>
+              <label class="date-picker-btn" for="taskDue" aria-label="Pilih tanggal">
+                <img src="assets/icons/Icon_Kalender(DeadlineTugas)@2x.png" alt="" width="36" height="36">
+                <input type="date" id="taskDue" name="due" tabindex="-1" aria-label="Tanggal tugas">
+              </label>
+            </div>
+            <div class="add-task-actions">
+              <button type="submit" class="form-submit" aria-label="Tambah tugas" title="Tambah tugas"><span aria-hidden="true">＋</span></button>
+            </div>
+          </form>
+        </section>
+
+        <section class="task-panel" aria-labelledby="h-tasks">
+          <h1 id="h-tasks" class="visually-hidden">Tugas Saya</h1>
+          <ul class="task-list" id="taskList"></ul>
+        <div class="empty" id="emptyState" hidden>
+          <svg viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="Ilustrasi daftar tugas kosong">
+            <rect x="22" y="14" width="76" height="62" rx="14" fill="none" stroke="#7e6d9a" stroke-width="3"/>
+            <path d="M40 38h40M40 52h24" stroke="#ffb763" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <p>Belum ada tugas di sini.</p>
+        </div>
+        </section>
+      </main>
+
+      <main class="page" id="page-stats" aria-labelledby="h-stats" hidden>
+        <div class="greeting">
+          <h1 id="h-stats">Statistik</h1>
+          <p class="muted">Lihat progres penyelesaian To Do List-mu.</p>
+        </div>
+
+        <section class="card donut-card" aria-label="Persentase penyelesaian">
+          <svg class="donut" viewBox="0 0 120 120" role="img" aria-labelledby="donutTitle">
+            <title id="donutTitle">Grafik lingkaran persentase To Do List selesai</title>
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#e6e0ef" stroke-width="14"/>
+            <circle id="donutArc" cx="60" cy="60" r="46" fill="none" stroke="#ffb763" stroke-width="14"
+                    stroke-linecap="round" transform="rotate(-90 60 60)"/>
+            <text id="donutText" x="60" y="68" text-anchor="middle" font-size="24" font-weight="700" fill="#5a4a76">0%</text>
+          </svg>
+          <ul class="stat-list">
+            <li><span class="dot dot-purple"></span> Total <strong id="statTotal">0</strong></li>
+            <li><span class="dot dot-orange"></span> Selesai <strong id="statDone">0</strong></li>
+            <li><span class="dot dot-light"></span> Aktif <strong id="statActive">0</strong></li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="h-week">
+          <h2 id="h-week" class="card-title">To Do List selesai 7 hari terakhir</h2>
+          <svg class="bars" id="barChart" viewBox="0 0 300 160" role="img" aria-label="Diagram batang jumlah To Do List selesai per hari"></svg>
+        </section>
+
+        <p class="insight" id="insight"></p>
+      </main>
+
+      <main class="page" id="page-profile" aria-labelledby="h-profile" hidden>
+        <section class="profile-empty" id="profileEmpty" aria-labelledby="h-profile">
+          <h1 id="h-profile" class="visually-hidden">Profil</h1>
+          <p>Profil Belum Ada</p>
+          <button type="button" class="btn btn-pill profile-complete" id="showProfileBtn">Lengkapi Sekarang</button>
+        </section>
+
+        <form class="profile-form" id="profileForm" hidden>
+          <h2>Lengkapi Profil</h2>
+          <label for="profilePhoto">Foto profil</label>
+          <input class="profile-photo-input" id="profilePhoto" name="photo" type="file" accept="image/*">
+          <img class="profile-photo-preview" id="profilePhotoPreview" alt="Pratinjau foto profil" hidden>
+          <label for="profileName">Nama lengkap</label>
+          <input class="input" id="profileName" name="name" type="text" maxlength="80" autocomplete="name" required>
+          <label for="profileAge">Umur</label>
+          <input class="input" id="profileAge" name="age" type="number" min="1" max="120" inputmode="numeric" required>
+          <label for="profileStatus">Status / pekerjaan</label>
+          <input class="input" id="profileStatus" name="status" type="text" maxlength="80" placeholder="Contoh: Mahasiswa" required>
+          <label for="profileMajor">Nama jurusan / jenis pekerjaan</label>
+          <input class="input" id="profileMajor" name="major" type="text" maxlength="100" placeholder="Contoh: Teknologi Multimedia dan Broadcasting" required>
+          <label for="profileInstitution">Nama instansi</label>
+          <input class="input" id="profileInstitution" name="institution" type="text" maxlength="100" placeholder="Nama sekolah, kampus, atau tempat kerja" required>
+          <p class="error-text" id="profileError" role="alert" aria-live="assertive"></p>
+          <div class="profile-form-actions">
+            <button type="button" class="btn btn-ghost" id="cancelProfileBtn">Batal</button>
+            <button type="submit" class="btn btn-pill">Simpan Profil</button>
+          </div>
+        </form>
+
+        <dialog class="photo-crop-dialog" id="photoCropDialog" aria-labelledby="photoCropTitle">
+          <div class="photo-crop-content">
+            <h2 id="photoCropTitle">Atur potongan foto</h2>
+            <div class="photo-crop-stage">
+              <canvas id="photoCropCanvas" width="720" height="405" aria-label="Pratinjau area foto yang akan dipotong"></canvas>
+              <p class="photo-crop-hint">Geser foto untuk mengatur posisi</p>
+            </div>
+            <label class="photo-crop-zoom" for="photoCropZoom">
+              <span>Zoom</span>
+              <input id="photoCropZoom" type="range" min="1" max="3" step="0.01" value="1">
+            </label>
+            <div class="photo-crop-actions">
+              <button type="button" class="btn btn-ghost" id="cancelPhotoCrop">Batal</button>
+              <button type="button" class="btn btn-pill" id="applyPhotoCrop">Pakai Foto</button>
+            </div>
+          </div>
+        </dialog>
+
+        <section class="profile-view" id="profileView" aria-labelledby="profileViewName" hidden>
+          <img class="profile-view-photo" id="profileViewPhoto" alt="Foto profil" hidden>
+          <h2 id="profileViewName"></h2>
+          <p><span>Umur</span><strong id="profileViewAge"></strong></p>
+          <p><span>Status / pekerjaan</span><strong id="profileViewStatus"></strong></p>
+          <p><span>Jurusan / jenis pekerjaan</span><strong id="profileViewMajor"></strong></p>
+          <p><span>Instansi</span><strong id="profileViewInstitution"></strong></p>
+          <button type="button" class="btn btn-pill" id="editProfileBtn">Ubah Profil</button>
+        </section>
+      </main>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+      <button type="button" class="nav-btn is-active" data-page="tasks" aria-current="page">
+        <span class="nav-circle"><img src="assets/icons/Icon_Tab_Tugas@2x.png" alt="Ikon daftar tugas" width="54" height="54"></span>
+        <span class="nav-label">Tugas</span>
+      </button>
+      <button type="button" class="nav-btn" data-page="stats">
+        <span class="nav-circle"><img src="assets/icons/Icon_Tab_Statistik@2x.png" alt="Ikon grafik statistik" width="54" height="54"></span>
+        <span class="nav-label">Statistik</span>
+      </button>
+      <button type="button" class="nav-btn" data-page="profile">
+        <span class="nav-circle"><img src="assets/icons/Icon_Tab_Profil@2x.png" alt="Ikon profil pengguna" width="54" height="54"></span>
+        <span class="nav-label">Profil</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
