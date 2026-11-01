@@ -22,6 +22,7 @@ Project Akhir Praktikum Pemrograman Visual (TB033109), PENS — Kaysan Aziz Abri
 ## Dokumen
 - [Project charter](docs/CHARTER.md)
 - [Roadmap sprint P10–P14](docs/ROADMAP.md)
+- [Dependensi pustaka UI](docs/DEPENDENCIES.md)
 
 ## Sumber kode dan bantuan AI
 - Kode dasar aplikasi: Tugas 4 milik sendiri (commit awal `1cf08f6`).
