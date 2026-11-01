@@ -46,7 +46,12 @@
     try { return localStorage.getItem(key); } catch (e) { return null; }
   }
   function safeSet(key, value) {
-    try { localStorage.setItem(key, value); } catch (e) {}
+    try {
+      localStorage.setItem(key, value);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   let tasks = [];
@@ -498,9 +503,12 @@
       $('#profileError').textContent = 'Lengkapi semua data profil.';
       return;
     }
+    if (!safeSet(PROFILE_KEY, JSON.stringify(profileValues))) {
+      $('#profileError').textContent = 'Profil tidak dapat disimpan. Ruang penyimpanan browser mungkin penuh.';
+      return;
+    }
     $('#profileError').textContent = '';
     profile = profileValues;
-    safeSet(PROFILE_KEY, JSON.stringify(profile));
     renderProfile();
   }
 
