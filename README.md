@@ -3,13 +3,13 @@ Cara pakai: ekstrak ZIP, lalu buka index.html di browser (tanpa server/instalasi
 
 Struktur:
 index.html          -> struktur halaman (Welcome, Tugas, Statistik, Profil)
-style.css           -> tampilan, palet warna, responsif, prefers-reduced-motion
-main.js             -> logika tugas, animasi, efek suara, statistik
+src/style.css       -> tampilan, palet warna, responsif, prefers-reduced-motion
+src/main.js         -> logika tugas, animasi, efek suara, statistik
 assets/images/      -> logo Task Do
 assets/icons/       -> ikon tab, checklist, deadline, panah, dan tempat sampah
 
 Profil dapat dilengkapi pengguna dari tab Profil (nama lengkap, umur, status/pekerjaan, dan instansi); datanya disimpan di localStorage browser.
-Efek suara tidak memakai file audio; bunyi dibuat dengan Web Audio API di main.js
+Efek suara tidak memakai file audio; bunyi dibuat dengan Web Audio API di src/main.js
 (fungsi playTones dan objek sfx).
 
 Palet: ungu #7E6D9A, oranye #FFB763, putih #FFFFFF
@@ -21,4 +21,4 @@ SUMBER KODE DAN ASET
 - Kode yang disalin dari sumber lain: [tulis "Tidak ada." atau daftar beserta tautannya]
 
 PENANGANAN MEDIA GAGAL DIMUAT
-Jika gambar atau ikon gagal dimuat, logo diganti teks "Task*Do", ikon hapus diganti teks "Hapus", dan ikon lain disembunyikan (fungsi handleMediaError di main.js).
+Jika gambar atau ikon gagal dimuat, logo diganti teks "Task*Do", ikon hapus diganti teks "Hapus", dan ikon lain disembunyikan (fungsi handleMediaError di src/main.js).
