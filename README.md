@@ -1,24 +1,29 @@
-TASK DO - Web Pencatat Tugas (Prototipe Tugas 4)
-Cara pakai: ekstrak ZIP, lalu buka index.html di browser (tanpa server/instalasi). Tekan "Catat Sekarang" untuk langsung membuka daftar tugas; tidak perlu login.
+# Task DO
 
-Struktur:
-index.html          -> struktur halaman (Welcome, Tugas, Statistik, Profil)
-src/style.css       -> tampilan, palet warna, responsif, prefers-reduced-motion
-src/main.js         -> logika tugas, animasi, efek suara, statistik
-assets/images/      -> logo Task Do
-assets/icons/       -> ikon tab, checklist, deadline, panah, dan tempat sampah
+Aplikasi pencatat tugas untuk mahasiswa yang tugas akademik dan non-akademiknya menumpuk.
 
-Profil dapat dilengkapi pengguna dari tab Profil (nama lengkap, umur, status/pekerjaan, dan instansi); datanya disimpan di localStorage browser.
-Efek suara tidak memakai file audio; bunyi dibuat dengan Web Audio API di src/main.js
-(fungsi playTones dan objek sfx).
+**Masalah:** mahasiswa sulit mengingat tugas mana yang belum selesai dan kapan tenggatnya, sehingga sering terlambat atau mengerjakan mendadak.
 
-Palet: ungu #7E6D9A, oranye #FFB763, putih #FFFFFF
+Project Akhir Praktikum Pemrograman Visual (TB033109), PENS — Kaysan Aziz Abrisam, NRP 5125500040, kelas 3 D3 MM B.
 
-SUMBER KODE DAN ASET
-- Font "Google Sans Flex" dimuat dari Google Fonts (https://fonts.google.com). Butuh internet; tanpa internet, aplikasi tetap berjalan dengan font cadangan sistem.
-- Logo dan ikon: dibuat sendiri.
-- Efek suara: dibuat dengan Web Audio API (tanpa file audio).
-- Kode yang disalin dari sumber lain: [tulis "Tidak ada." atau daftar beserta tautannya]
+## Cara menjalankan
+1. Unduh atau clone repositori ini:
+   ```
+   git clone https://github.com/azizabrisam00/ppv-project-akhir-5125500040.git
+   ```
+2. Buka `index.html` di Chrome atau Firefox (klik dua kali sudah cukup). Butuh koneksi internet bila pustaka UI dimuat dari CDN.
 
-PENANGANAN MEDIA GAGAL DIMUAT
-Jika gambar atau ikon gagal dimuat, logo diganti teks "Task*Do", ikon hapus diganti teks "Hapus", dan ikon lain disembunyikan (fungsi handleMediaError di src/main.js).
+## Struktur folder
+- `index.html` — halaman utama
+- `src/` — kode JavaScript dan CSS
+- `assets/` — ikon dan gambar
+- `docs/` — dokumen proyek
+
+## Dokumen
+- [Project charter](docs/CHARTER.md)
+- [Roadmap sprint P10–P14](docs/ROADMAP.md)
+
+## Sumber kode dan bantuan AI
+- Kode dasar aplikasi: Tugas 4 milik sendiri (commit awal `1cf08f6`).
+- Bantuan AI (Claude, Anthropic): membantu menyusun draf `docs/CHARTER.md` dan `docs/ROADMAP.md` berdasarkan penjelasan saya tentang aplikasi, lalu saya periksa dan sesuaikan. Claude juga membantu menjelaskan penyebab masalah P1–P4 pada latihan Bagian A (repositori latihan terpisah).
+- Bagian lain akan dicatat di sini setiap kali memakai bantuan AI atau sumber luar, lengkap dengan tautan atau prompt-nya.

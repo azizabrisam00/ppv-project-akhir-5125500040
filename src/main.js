@@ -192,7 +192,7 @@
     icon.src = 'assets/icons/trash.svg';
     icon.alt = '';
     del.appendChild(icon);
-    del.addEventListener('click', () => removeTask(task.id, li));
+    del.addEventListener('click', () => bukaKonfirmasiHapus(task.title, () => removeTask(task.id, li)));
 
     actions.appendChild(del);
     li.append(body, actions);
@@ -210,7 +210,9 @@
       const group = document.createElement('li');
       group.className = 'task-group' + (groupName === 'completed' ? ' is-completed-group' : '');
       const panel = document.createElement('section');
-      panel.className = 'task-group-panel';
+      panel.className = 'card task-group-panel';
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
       panel.setAttribute('aria-label', `${label}, ${groupTasks.length} tugas`);
       const heading = document.createElement('div');
       heading.className = 'task-group-label';
@@ -238,7 +240,8 @@
         });
       }
 
-      panel.append(heading, items);
+      cardBody.append(heading, items);
+      panel.appendChild(cardBody);
       group.appendChild(panel);
       list.appendChild(group);
     };
@@ -257,6 +260,7 @@
     saveTasks();
     if (checked) {
       sfx.check();
+      tampilToast('To Do List selesai. Kerja bagus!');
     } else {
       sfx.uncheck();
     }
@@ -268,6 +272,7 @@
       tasks = tasks.filter((t) => t.id !== id);
       saveTasks();
       renderList();
+      tampilToast('To Do List dihapus');
     };
     sfx.remove();
     const anim = animate(card, [
@@ -522,6 +527,7 @@
       $('#taskForm').reset();
       renderDateShortcuts();
     sfx.add();
+    tampilToast('To Do List ditambahkan');
     renderList();
     input.focus();
   }

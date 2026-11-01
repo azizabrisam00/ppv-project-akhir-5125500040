@@ -250,12 +250,14 @@ ul { padding: 0; list-style: none; }
 .empty[hidden] { display: none; }
 
 .card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 16px;
+  /* Komponen Bootstrap Card; tema lewat variabel CSS card */
+  --bs-card-bg: var(--white);
+  --bs-card-border-color: var(--line);
+  --bs-card-border-radius: var(--radius);
+  --bs-card-inner-border-radius: calc(var(--radius) - 1px);
+  --bs-card-spacer-y: 16px;
+  --bs-card-spacer-x: 16px;
   margin-bottom: 14px;
-  min-width: 0;
 }
 .card-title { font-size: var(--type-subheading); line-height: 1.15; color: var(--purple-dark); margin-bottom: 10px; }
 .card-title.sub { margin-top: 14px; }
@@ -284,30 +286,53 @@ ul { padding: 0; list-style: none; }
 .col { min-width: 0; }
 
 .btn {
-  border: 0;
-  cursor: pointer;
-  font-weight: 600;
-  transition: transform .15s, background-color .2s;
+  /* Komponen Bootstrap Button; bentuk dan warna tema lewat variabel CSS tombol */
+  --bs-btn-font-weight: 600;
+  --bs-btn-border-radius: 999px;
+  --bs-btn-border-width: 0;
 }
-.btn-pill {
-  background: var(--purple);
-  color: var(--white);
-  border-radius: 999px;
-  padding: 8px 18px;
-  font-size: 14px;
+.btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; box-shadow: none; }
+.btn-primary {
+  --bs-btn-color: var(--white);
+  --bs-btn-bg: var(--purple);
+  --bs-btn-border-color: var(--purple);
+  --bs-btn-hover-color: var(--white);
+  --bs-btn-hover-bg: var(--purple-dark);
+  --bs-btn-hover-border-color: var(--purple-dark);
+  --bs-btn-active-color: var(--white);
+  --bs-btn-active-bg: var(--purple-dark);
+  --bs-btn-active-border-color: var(--purple-dark);
+  --bs-btn-disabled-color: var(--white);
+  --bs-btn-disabled-bg: var(--purple);
+  --bs-btn-disabled-border-color: var(--purple);
 }
-.btn-pill:hover { background: var(--purple-dark); }
+.btn-outline-primary {
+  --bs-btn-border-width: 1.5px;
+  --bs-btn-color: var(--purple-dark);
+  --bs-btn-border-color: var(--purple);
+  --bs-btn-hover-color: var(--purple-dark);
+  --bs-btn-hover-bg: var(--purple-soft);
+  --bs-btn-hover-border-color: var(--purple);
+  --bs-btn-active-color: var(--purple-dark);
+  --bs-btn-active-bg: var(--purple-light);
+  --bs-btn-active-border-color: var(--purple);
+  --bs-btn-disabled-color: var(--purple);
+  --bs-btn-disabled-border-color: var(--purple);
+}
+.btn-danger {
+  --bs-btn-color: var(--white);
+  --bs-btn-bg: var(--danger);
+  --bs-btn-border-color: var(--danger);
+  --bs-btn-hover-color: var(--white);
+  --bs-btn-hover-bg: #a52f23;
+  --bs-btn-hover-border-color: #a52f23;
+  --bs-btn-active-color: var(--white);
+  --bs-btn-active-bg: #a52f23;
+  --bs-btn-active-border-color: #a52f23;
+}
+.btn-pill { padding: 8px 18px; font-size: 14px; }
 .btn-pill:active { transform: scale(0.97); }
-.btn-block { width: 100%; padding: 12px 18px; font-size: 15px; }
-.btn-ghost {
-  background: var(--white);
-  color: var(--purple-dark);
-  border: 1.5px solid var(--purple);
-  border-radius: 999px;
-  padding: 10px 16px;
-  margin-top: 12px;
-}
-.btn-ghost:hover { background: var(--purple-soft); }
+.btn-ghost { padding: 10px 16px; margin-top: 12px; }
 
 .progress-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
 .pct { font-weight: 700; color: var(--purple-dark); }
@@ -375,13 +400,6 @@ ul { padding: 0; list-style: none; }
 .task-body { min-width: 0; }
 .task-title { font-weight: 600; overflow-wrap: anywhere; }
 .task-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; font-size: 12px; color: var(--muted); align-items: center; }
-.badge {
-  display: inline-block;
-  padding: 1px 9px;
-  border-radius: 999px;
-  font-size: 11.5px;
-  font-weight: 700;
-}
 .del-btn {
   width: 36px;
   height: 36px;
@@ -720,7 +738,7 @@ body { background: var(--white); }
   border-radius: 50%;
   background: var(--purple) center / cover no-repeat;
 }
-.new-task-check span { background-image: url("assets/icons/Icon_Checklist@2x.png"); }
+.new-task-check span { background-image: url("../assets/icons/Icon_Checklist@2x.png"); }
 .task-entry { height: 26px; font-size: 18px; font-weight: 700; }
 .task-entry::placeholder { color: var(--muted); opacity: 1; font-weight: 400; }
 .error-text:empty { display: none; }
@@ -969,7 +987,7 @@ body { background: var(--white); }
 .task-card-details { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
 .task-list { gap: clamp(96px, 20vh, 180px); }
 .task-card, .task-card.is-done { grid-template-columns: 22px minmax(0, 1fr) 36px; gap: 6px; }
-.check input, .check input:checked { background: transparent center / cover no-repeat url("assets/icons/Icon_Checklist@2x.png"); }
+.check input, .check input:checked { background: transparent center / cover no-repeat url("../assets/icons/Icon_Checklist@2x.png"); }
 .bottom-nav { right: 14px; left: 14px; }
 .profile-complete { padding: 8px 16px; font-size: 16px; }
 #page-profile.page { justify-content: flex-start; padding-top: clamp(16px, 5vh, 48px); }
@@ -995,11 +1013,12 @@ body { background: var(--white); }
   margin: 0 0 14px;
 }
 .task-group-panel {
-  padding: 16px 18px 12px;
-  border: 1px solid var(--purple);
-  border-radius: 16px;
-  background: var(--white);
+  --bs-card-border-color: var(--purple);
+  --bs-card-border-radius: 16px;
+  --bs-card-inner-border-radius: 15px;
+  --bs-card-bg: var(--white);
 }
+.task-group-panel .card-body { padding: 16px 18px 12px; }
 .task-group-items { display: flex; flex-direction: column; }
 .task-group-items > .task-card { border-bottom: 1px solid var(--line); }
 .task-group-items > .task-card:last-child { border-bottom: 0; }
@@ -1042,3 +1061,40 @@ body { background: var(--white); }
 .logo-fallback { font-weight: 800; color: var(--purple-dark); letter-spacing: .5px; line-height: 1; }
 .welcome .logo-fallback { font-size: 40px; }
 .topbar .logo-fallback { font-size: 22px; }
+
+/* ==== Tema Bootstrap 5.3.3: variabel CSS pustaka, bukan menimpa aturan internalnya ==== */
+:root {
+  --bs-primary: #7e6d9a;
+  --bs-primary-rgb: 126, 109, 154;
+  --bs-body-font-family: "Google Sans Flex", "Google Sans", Arial, sans-serif;
+  --bs-body-color: #2b2536;
+  --bs-body-color-rgb: 43, 37, 54;
+  --bs-border-color: #e3e7eb;
+}
+/* Reboot Bootstrap membuat judul bertebal 500; desain Task DO memakai tebal */
+h1, h2 { font-weight: 700; }
+
+/* Toast: di atas bottom-nav, warna tema */
+.toast-container { bottom: 84px; }
+.toast {
+  --bs-toast-color: var(--white);
+  --bs-toast-bg: var(--purple-dark);
+  --bs-toast-border-width: 0;
+  --bs-toast-border-radius: 14px;
+}
+
+/* Modal: sudut dan warna judul sesuai tema */
+.modal {
+  --bs-modal-border-radius: 18px;
+  --bs-modal-inner-border-radius: 17px;
+  --bs-modal-header-border-color: var(--line);
+  --bs-modal-footer-border-color: var(--line);
+}
+.modal-title { color: var(--purple-dark); }
+
+@media (max-width: 600px) {
+  .toast-container { bottom: 78px; }
+}
+@media (orientation: landscape) and (max-height: 560px) {
+  .toast-container { bottom: 66px; }
+}
