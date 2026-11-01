@@ -312,6 +312,11 @@
     input.removeAttribute('aria-invalid');
   }
 
+  function limitWords(value, maxWords) {
+    const words = value.trim().split(/\s+/);
+    return words.length > maxWords ? words.slice(0, maxWords).join(' ') : value;
+  }
+
   function setTaskDue(daysFromToday) {
     const date = new Date();
     date.setDate(date.getDate() + daysFromToday);
@@ -515,6 +520,8 @@
   function onSubmit(e) {
     e.preventDefault();
     const input = $('#taskTitle');
+    input.value = limitWords(input.value, 10);
+    $('#taskDetails').value = limitWords($('#taskDetails').value, 100);
     const title = input.value.trim();
     if (title.length === 0) return showError('Nama tugas tidak boleh kosong.');
     if (title.length < 3) return showError('Tulis nama tugas minimal 3 karakter.');
@@ -629,7 +636,15 @@
 
     $$('.nav-btn').forEach((btn) => btn.addEventListener('click', () => showPage(btn.dataset.page)));
     $('#taskForm').addEventListener('submit', onSubmit);
-    $('#taskTitle').addEventListener('input', clearError);
+    $('#taskTitle').addEventListener('input', () => {
+      const input = $('#taskTitle');
+      input.value = limitWords(input.value, 10);
+      clearError();
+    });
+    $('#taskDetails').addEventListener('input', () => {
+      const input = $('#taskDetails');
+      input.value = limitWords(input.value, 100);
+    });
     $('#showProfileBtn').addEventListener('click', editProfile);
     $('#profileForm').addEventListener('submit', saveProfile);
     $('#profilePhoto').addEventListener('change', onProfilePhotoChange);

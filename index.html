@@ -33,13 +33,13 @@
           <form class="add-task-form" id="taskForm" novalidate>
             <div class="task-editor-main">
               <span class="new-task-check" aria-hidden="true"><span></span></span>
-              <input class="task-entry" type="text" id="taskTitle" name="title" maxlength="80"
+              <input class="task-entry" type="text" id="taskTitle" name="title" maxlength="300"
                 placeholder="Tulis Judul To Do List..." autocomplete="off" aria-label="Judul To Do List"
                      aria-describedby="titleError">
             </div>
             <p class="error-text" id="titleError" role="alert" aria-live="assertive"></p>
             <label class="task-details-row" for="taskDetails">
-              <textarea class="task-details-entry" id="taskDetails" name="details" rows="1" maxlength="240" placeholder="Tulis deskripsi tugas (opsional)..." aria-label="Deskripsi tugas, opsional"></textarea>
+              <textarea class="task-details-entry" id="taskDetails" name="details" rows="1" placeholder="Tulis deskripsi tugas (opsional)..." aria-label="Deskripsi tugas, opsional"></textarea>
             </label>
             <div class="task-date-actions">
               <span class="deadline-label">Pilih Deadline</span>

@@ -1091,6 +1091,15 @@ h1, h2 { font-weight: 700; }
   --bs-modal-footer-border-color: var(--line);
 }
 .modal-title { color: var(--purple-dark); }
+.modal-body { height: 96px; overflow-y: auto; }
+.modal-body p { overflow-wrap: anywhere; }
+.task-title {
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
 
 @media (max-width: 600px) {
   .toast-container { bottom: 78px; }
