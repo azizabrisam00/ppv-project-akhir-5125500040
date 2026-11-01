@@ -1,0 +1,30 @@
+[
+  {
+    "berkas": "index.html",
+    "jenis": "text/html",
+    "ukuran_kb": 2.5,
+    "sumber": "kode sendiri",
+    "lisensi": "MIT"
+  },
+  {
+    "berkas": "style.css",
+    "jenis": "text/css",
+    "ukuran_kb": 4.1,
+    "sumber": "kode sendiri",
+    "lisensi": "MIT"
+  },
+  {
+    "berkas": "app.js",
+    "jenis": "application/javascript",
+    "ukuran_kb": 6.8,
+    "sumber": "kode sendiri",
+    "lisensi": "MIT"
+  },
+  {
+    "berkas": "assets/logo.svg",
+    "jenis": "image/svg+xml",
+    "ukuran_kb": 0.5,
+    "sumber": "desain sendiri",
+    "lisensi": "CC BY 4.0"
+  }
+]

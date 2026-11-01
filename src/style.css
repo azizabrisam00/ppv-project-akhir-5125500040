@@ -1091,12 +1091,17 @@ h1, h2 { font-weight: 700; }
   --bs-modal-footer-border-color: var(--line);
 }
 .modal-title { color: var(--purple-dark); }
-.modal-body { height: 96px; overflow-y: auto; }
-.modal-body p { overflow-wrap: anywhere; }
+.modal-body { height: 96px; overflow-x: hidden; overflow-y: auto; }
+.modal-body p { min-width: 0; overflow-wrap: anywhere; }
+#modalHapus .modal-body [data-judul] {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
 .task-title {
   display: -webkit-box;
   overflow: hidden;
   overflow-wrap: anywhere;
+  word-break: break-all;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
