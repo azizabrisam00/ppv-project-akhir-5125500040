@@ -1116,3 +1116,152 @@ h1, h2 { font-weight: 700; }
 @media (orientation: landscape) and (max-height: 560px) {
   .toast-container { bottom: 66px; }
 }
+
+/* === Penyesuaian tampilan agar lebih dekat dengan referensi screenshot === */
+body {
+  background: #121417;
+  color: #edf2f7;
+}
+
+.app {
+  max-width: 1180px;
+  background: #1b1e22;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.26);
+}
+
+.topbar,
+.task-panel,
+.task-compose-area,
+.profile-form,
+.profile-view,
+.profile-empty,
+.content,
+.page {
+  background: #1b1e22;
+  color: #edf2f7;
+}
+
+.task-panel,
+.task-compose-area,
+.profile-form,
+.profile-view,
+.profile-empty {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.task-entry,
+.task-details-entry,
+.input,
+.profile-photo-input,
+#profileName,
+#profileAge,
+#profileStatus,
+#profileMajor,
+#profileInstitution {
+  background: transparent;
+  color: #edf2f7;
+}
+
+.task-entry::placeholder,
+.task-details-entry::placeholder,
+.input::placeholder,
+#profileName::placeholder,
+#profileAge::placeholder,
+#profileStatus::placeholder,
+#profileMajor::placeholder,
+#profileInstitution::placeholder {
+  color: #9aa7b3;
+}
+
+.task-group-label h2,
+.task-title,
+.task-card-details,
+.task-due,
+.greeting h1,
+.profile-name,
+.profile-view p strong,
+.profile-empty p,
+.modal-title,
+.card-title,
+#h-profile,
+#h-stats,
+#h-tasks {
+  color: #edf2f7;
+}
+
+.task-card,
+.task-card.is-done,
+.task-group-panel,
+.card,
+.task-group {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.task-card.is-done .task-title,
+.task-card.is-done .task-card-details {
+  color: #b3bac3;
+}
+
+.del-btn,
+.date-chip,
+.form-submit,
+.nav-circle,
+.btn-primary,
+.btn-danger,
+.btn-outline-primary,
+.btn-ghost {
+  filter: saturate(1.05);
+}
+
+.nav-btn,
+.nav-label {
+  color: #edf2f7;
+}
+
+.bottom-nav {
+  background: #171a1d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-content,
+.modal-body,
+.modal-header,
+.modal-footer {
+  background: #1d2227;
+  color: #edf2f7;
+}
+
+.toast {
+  --bs-toast-bg: rgba(27, 30, 34, 0.96);
+  --bs-toast-color: #edf2f7;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#toastInfo .toast-body {
+  color: #edf2f7;
+}
+
+.logo-fallback,
+.welcome-tagline,
+.muted,
+.profile-view p,
+.profile-view span,
+.task-group-empty,
+.empty,
+.error-text {
+  color: #c7d0d9;
+}
+
+@media (max-width: 600px) {
+  body {
+    background: #121417;
+  }
+
+  .app {
+    max-width: 100%;
+    border-radius: 0;
+    border: 0;
+  }
+}
