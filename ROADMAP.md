@@ -9,11 +9,14 @@ Fitur MVP mengacu pada charter: F1 Catat tugas + deadline, F2 Rekap belum/selesa
     P10
         Deliverable: debug ≥ 2 bug nyata + cabang/merge
         Fitur MVP: F1, F2 (bug tanggal/deadline dan status centang)
-        Bukti: cabang fix/..., hash merge
+        Status Sprint 2: Selesai
+        Alasan: dua bug nyata diperbaiki (foto profil tidak persisten dan teks meluber); cabang perbaikan telah digabung dan dipush ke main.
+        Bukti: perbaikan persistensi foto profil, wrapping teks tugas/modal, serta merge cabang perbaikan
     P11
         Deliverable: kode dipecah menjadi ≥ 3 modul ES
         Fitur MVP: F1, F2, F3
-        Bukti: src/data.js, src/ui.js, src/main.js
+        Sprint: 3
+        Bukti saat ini: src/main.js dan src/ui-pustaka.js; pemecahan menjadi modul ES masih perlu diselesaikan.
     P12
         Deliverable: komponen reusable + penyimpanan aman + README/CHANGELOG + tag v0.x
         Fitur MVP: F1, F2, F3, F4 (bila waktu cukup)

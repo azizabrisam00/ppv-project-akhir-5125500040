@@ -2,29 +2,85 @@
   {
     "berkas": "index.html",
     "jenis": "text/html",
-    "ukuran_kb": 2.5,
+    "ukuran_kb": 12.1,
     "sumber": "kode sendiri",
     "lisensi": "MIT"
   },
   {
-    "berkas": "style.css",
+    "berkas": "css/style.css",
     "jenis": "text/css",
-    "ukuran_kb": 4.1,
+    "ukuran_kb": 39.2,
     "sumber": "kode sendiri",
     "lisensi": "MIT"
   },
   {
-    "berkas": "app.js",
+    "berkas": "src/main.js",
     "jenis": "application/javascript",
-    "ukuran_kb": 6.8,
+    "ukuran_kb": 24.8,
     "sumber": "kode sendiri",
     "lisensi": "MIT"
   },
   {
-    "berkas": "assets/logo.svg",
+    "berkas": "src/ui-pustaka.js",
+    "jenis": "application/javascript",
+    "ukuran_kb": 1.4,
+    "sumber": "kode sendiri",
+    "lisensi": "MIT"
+  },
+  {
+    "berkas": "assets/images/task-do-logo.png",
+    "jenis": "image/png",
+    "ukuran_kb": 57.8,
+    "sumber": "aset proyek",
+    "lisensi": "Periksa sumber aset"
+  },
+  {
+    "berkas": "assets/icons/Icon_Checklist@2x.png",
+    "jenis": "image/png",
+    "ukuran_kb": 1.9,
+    "sumber": "aset proyek",
+    "lisensi": "Periksa sumber aset"
+  },
+  {
+    "berkas": "assets/icons/Icon_Kalender(DeadlineTugas)@2x.png",
+    "jenis": "image/png",
+    "ukuran_kb": 2.2,
+    "sumber": "aset proyek",
+    "lisensi": "Periksa sumber aset"
+  },
+  {
+    "berkas": "assets/icons/Icon_Panah@2x.png",
+    "jenis": "image/png",
+    "ukuran_kb": 0.9,
+    "sumber": "aset proyek",
+    "lisensi": "Periksa sumber aset"
+  },
+  {
+    "berkas": "assets/icons/Icon_Tab_Profil@2x.png",
+    "jenis": "image/png",
+    "ukuran_kb": 2.7,
+    "sumber": "aset proyek",
+    "lisensi": "Periksa sumber aset"
+  },
+  {
+    "berkas": "assets/icons/Icon_Tab_Statistik@2x.png",
+    "jenis": "image/png",
+    "ukuran_kb": 2.8,
+    "sumber": "aset proyek",
+    "lisensi": "Periksa sumber aset"
+  },
+  {
+    "berkas": "assets/icons/Icon_Tab_Tugas@2x.png",
+    "jenis": "image/png",
+    "ukuran_kb": 1.8,
+    "sumber": "aset proyek",
+    "lisensi": "Periksa sumber aset"
+  },
+  {
+    "berkas": "assets/icons/trash.svg",
     "jenis": "image/svg+xml",
-    "ukuran_kb": 0.5,
-    "sumber": "desain sendiri",
-    "lisensi": "CC BY 4.0"
+    "ukuran_kb": 0.2,
+    "sumber": "aset proyek",
+    "lisensi": "Periksa sumber aset"
   }
 ]

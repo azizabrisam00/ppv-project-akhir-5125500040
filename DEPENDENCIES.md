@@ -5,7 +5,7 @@
 - **Pustaka:** Bootstrap 5.3.3. Versi dikunci di URL CDN; tidak menggunakan `@latest`.
 - **CSS:** https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
 - **JavaScript:** https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js
-- **Urutan CSS:** Bootstrap dimuat lebih dahulu, lalu `src/style.css` untuk tema dan penyesuaian aplikasi.
+- **Urutan CSS:** Bootstrap dimuat lebih dahulu, lalu `css/style.css` untuk tema dan penyesuaian aplikasi.
 - **Ukuran transfer terukur:** CSS 30.860 byte (sekitar 30,1 KiB) dan JavaScript 23.731 byte (sekitar 23,2 KiB), diukur dari respons CDN dengan kompresi aktif. Nilai di tab Network dapat sedikit berbeda bergantung pada kompresi, cache, dan browser.
 - **Alasan memilih:** Bootstrap menyediakan komponen UI umum yang sudah teruji dan responsif, sehingga aplikasi dapat memakai Card, Modal, Toast, dan Button tanpa membuat perilaku dasar semuanya dari nol. CSS kustom tetap mengatur tampilannya agar konsisten dengan identitas Task DO.
 
