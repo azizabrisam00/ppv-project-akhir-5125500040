@@ -1,3 +1,5 @@
+import { buatKartuTugas, buatPesanKosong } from './komponen.js';
+
 (() => {
   'use strict';
 
@@ -139,71 +141,6 @@
     if (push) { try { history.replaceState(null, '', '#' + name); } catch (e) {} }
   }
 
-  function formatDue(due) {
-    const [y, m, d] = due.split('-').map(Number);
-    const date = new Date(y, m - 1, d);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const daysFromToday = Math.round((date - today) / 86400000);
-    if (daysFromToday === -1) return 'Kemarin';
-    if (daysFromToday === 0) return 'Hari ini';
-    if (daysFromToday === 1) return 'Besok';
-    return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
-  }
-
-  function createCard(task) {
-    const li = document.createElement('li');
-    li.className = 'task-card' + (task.done ? ' is-done' : '');
-    li.dataset.id = task.id;
-
-    const body = document.createElement('div');
-    body.className = 'task-body';
-    const title = document.createElement('p');
-    title.className = 'task-title';
-    title.textContent = task.title;
-      if (task.details) {
-        const details = document.createElement('p');
-        details.className = 'task-card-details';
-        details.textContent = task.details;
-        body.append(title, details);
-      } else {
-        body.appendChild(title);
-      }
-    if (task.due) {
-      const due = document.createElement('span');
-      due.className = 'task-due';
-      due.textContent = formatDue(task.due);
-        body.appendChild(due);
-    }
-
-    const actions = document.createElement('div');
-    actions.className = 'task-actions';
-    if (!task.done) {
-      const label = document.createElement('label');
-      label.className = 'check';
-      const cb = document.createElement('input');
-      cb.type = 'checkbox';
-      cb.setAttribute('aria-label', 'Tandai selesai: ' + task.title);
-      cb.addEventListener('change', () => toggleTask(task.id, cb.checked));
-      label.appendChild(cb);
-      actions.appendChild(label);
-    }
-
-    const del = document.createElement('button');
-    del.type = 'button';
-    del.className = 'del-btn';
-    del.setAttribute('aria-label', 'Hapus tugas: ' + task.title);
-    const icon = document.createElement('img');
-    icon.src = 'assets/icons/trash.svg';
-    icon.alt = '';
-    del.appendChild(icon);
-    del.addEventListener('click', () => bukaKonfirmasiHapus(task.title, () => removeTask(task.id, li)));
-
-    actions.appendChild(del);
-    li.append(body, actions);
-    return li;
-  }
-
   function renderList() {
     const list = $('#taskList');
     list.textContent = '';
@@ -230,13 +167,16 @@
       items.className = 'task-group-items';
 
       if (groupTasks.length === 0) {
-        const empty = document.createElement('li');
-        empty.className = 'task-group-empty';
-        empty.textContent = emptyMessage;
-        items.appendChild(empty);
+        items.appendChild(buatPesanKosong(emptyMessage));
       } else {
         groupTasks.forEach((task) => {
-          const card = createCard(task);
+          const card = buatKartuTugas(task, {
+            onToggle: (tugas, checked, kartu) => toggleTask(tugas.id, checked, kartu),
+            onHapus: (tugas, kartu) => bukaKonfirmasiHapus(
+              tugas.title,
+              () => removeTask(tugas.id, kartu)
+            )
+          });
           items.appendChild(card);
           if (task.id === lastAddedId) animate(card, [
             { opacity: 0, transform: 'translateY(10px)' },
