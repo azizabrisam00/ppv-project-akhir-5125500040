@@ -1,9 +1,9 @@
 import { buatKartuTugas, buatPesanKosong } from './komponen.js';
+import { muat, simpan, ambilPesan } from './storage.js';
 
 (() => {
   'use strict';
 
-  const STORE_KEY = 'taskdo.tasks.v1';
   const PROFILE_KEY = 'taskdo.profile.v1';
   const NS = 'http://www.w3.org/2000/svg';
   const CROP_RATIO = 16 / 9;
@@ -78,16 +78,16 @@ import { buatKartuTugas, buatPesanKosong } from './komponen.js';
     } catch (e) { return null; }
   }
 
-  function loadTasks() {
-    const raw = safeGet(STORE_KEY);
-    if (!raw) return [];
-    try {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed)) return parsed.filter((task) => !String(task.id).startsWith('s'));
-    } catch (e) {}
-    return [];
+    function tampilInfoPenyimpanan(pesan) {
+    const el = $('#infoPenyimpanan');
+    el.textContent = pesan || '';
+    el.hidden = !pesan;
   }
-  function saveTasks() { safeSet(STORE_KEY, JSON.stringify(tasks)); }
+
+  function loadTasks() { return muat(); }
+  function saveTasks() {
+    if (!simpan(tasks)) tampilInfoPenyimpanan(ambilPesan());
+  }
 
   let audioCtx = null;
   function playTones(freqs, step = 0.12, type = 'sine', volume = 0.08) {
@@ -569,8 +569,8 @@ import { buatKartuTugas, buatPesanKosong } from './komponen.js';
       if (img.getAttribute('src') && img.complete && img.naturalWidth === 0) handleMediaError(img);
     });
     tasks = loadTasks();
+    tampilInfoPenyimpanan(ambilPesan());
     saveTasks();
-    profile = loadProfile();
 
     $('#enterBtn').addEventListener('click', enterApp);
 
